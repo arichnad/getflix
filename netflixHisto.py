@@ -68,7 +68,7 @@ for line in open('netflix.txt').xreadlines( ):
     id=arr.pop()
     rating[rat-1]=rating[rat-1]+1
     genreh[genre]=genreh[genre]+1
-    if genre != 'Television'
+    if genre != 'Television' :
 	decadeh[year[2]]=decadeh[year[2]]+1
 	decadehr[year[2]]=decadehr[year[2]]+rat
 	yearh[year]=yearh[year]+1
