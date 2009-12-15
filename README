@@ -1,0 +1,58 @@
+##########################################################
+The scripts in this package have been created by
+Copyright 2006 Devanshu Mehta
+  of http://www.scienceaddiction.com
+    It is released under the GNU General Public License v2
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+ getflix.pl and Netflix.pm have are based on scripts by John Ressig
+ of http://ejohn.org. Thanks John!
+
+KEEP IN MIND: I AM NOT A GREAT PERL PROGRAMMER!
+There must be better ways to do what I've done; but the method I've used works.
+If you think my way is wrong, let me know and I will work on it. Send me a specific 
+info, and I'll work on it faster! Tell me I suck, and I will work on it... never.
+
+Included files:
+- getflix.pl
+- Netflix.pm
+- nflixHisto.py
+- getdirectors.py
+- getstars.py
+- dirHisto.py
+
+PREPARATION:
+- Tested with Perl 5.8.6
+- Tested with Python 2.3
+- Perl modules: WWW::Mechanize, Crypt::SSLeay, and Data::Dumper
+- Python Module: mechanize
+
+INSTRUCTIONS:
+- Extract all the scripts by typing 'tar -zxf getFlix.tar.gz' at command line.
+- Type 'cd getFlix' at command line.
+- Edit your email address and password in the getflix.pl script.
+- Edit the path to perl (the first line) to match yours in each .pl script.
+- Edit the path to python to match yours in each .py script.
+- Run './getflix.pl' at the command line. This will generate nflicks.txt.
+- Run './getdirectors.py' at command line.
+- Run './getstars.py' at command line.
+- Run './dirHisto.py' at command line.
+- Run './nflixHisto.py' at command line. This will generate idfile.txt.
+
+Enjoy! And if you have questions, comments, bugs or additions: 
+http://www.scienceaddiction.com
+
+Emails will be less likely to be taken seriously. Leave comments on the web
+site for a response.
