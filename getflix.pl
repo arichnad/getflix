@@ -24,9 +24,9 @@
 # This code is based on the original script by John Ressig
 # of http://ejohn.org. Thanks John!
 #
-# It generates an output file called nflicks.txt with ratings information.
+# It generates an output file called netflix.txt with ratings information.
 # Format: 60000161~Wonder Boys~2000~R~Drama~3
-#         NflixID~Film Title~Year~MPAA~Genre~Rating
+#         NetflixID~Film Title~Year~MPAA~Genre~Rating
 
 
 use Netflix;

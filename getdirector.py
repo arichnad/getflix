@@ -39,7 +39,7 @@ rat=0
 id=0
 tempstr=''
 br=Browser()
-for line in open('nflicks.txt').xreadlines( ):
+for line in open('netflix.txt').xreadlines( ):
     arr=line.split('~')
     rat=int(arr.pop())
     id=arr.pop(0)

@@ -33,9 +33,9 @@ mpaah={'PG':0, 'R':0, 'PG-13':0, 'UR':0, 'G':0, 'NC-17':0, 'NR':0}
 mpaahr={'PG':0.0, 'R':0.0, 'PG-13':0.0, 'UR':0.0, 'G':0.0, 'NC-17':0.0, 'NR':0.0}
 mpaahr5={'PG':0.0, 'R':0.0, 'PG-13':0.0, 'UR':0.0, 'G':0.0, 'NC-17':0.0, 'NR':0.0}
 
-genreh={'Foreign':0, 'Drama':0, 'Independent':0, 'Classics':0, 'Television':0, 'Children & Family':0, 'Sci-Fi & Fantasy':0, 'Comedy':0, 'Romance':0, 'Action & Adventure':0, 'Horror':0, 'Documentary':0, 'Thrillers':0, 'Music & Musicals':0, 'Anime & Animation':0, 'Gay & Lesbian':0}
-genrehr={'Foreign':0.0, 'Drama':0.0, 'Independent':0.0, 'Classics':0.0, 'Television':0.0, 'Children & Family':0.0, 'Sci-Fi & Fantasy':0.0, 'Comedy':0.0, 'Romance':0.0, 'Action & Adventure':0.0, 'Horror':0.0, 'Documentary':0.0, 'Thrillers':0.0, 'Music & Musicals':0.0, 'Anime & Animation':0.0, 'Gay & Lesbian':0.0}
-genrehr5={'Foreign':0.0, 'Drama':0.0, 'Independent':0.0, 'Classics':0.0, 'Television':0.0, 'Children & Family':0.0, 'Sci-Fi & Fantasy':0.0, 'Comedy':0.0, 'Romance':0.0, 'Action & Adventure':0.0, 'Horror':0.0, 'Documentary':0.0, 'Thrillers':0.0, 'Music & Musicals':0.0, 'Anime & Animation':0.0, 'Gay & Lesbian':0.0}
+genreh={'Foreign':0, 'Drama':0, 'Independent':0, 'Classics':0, 'Television':0, 'Children & Family':0, 'Sci-Fi & Fantasy':0, 'Comedy':0, 'Romance':0, 'Action & Adventure':0, 'Horror':0, 'Documentary':0, 'Thrillers':0, 'Music & Musicals':0, 'Anime & Animation':0, 'Gay & Lesbian':0, 'Special Interest':0}
+genrehr={'Foreign':0.0, 'Drama':0.0, 'Independent':0.0, 'Classics':0.0, 'Television':0.0, 'Children & Family':0.0, 'Sci-Fi & Fantasy':0.0, 'Comedy':0.0, 'Romance':0.0, 'Action & Adventure':0.0, 'Horror':0.0, 'Documentary':0.0, 'Thrillers':0.0, 'Music & Musicals':0.0, 'Anime & Animation':0.0, 'Gay & Lesbian':0.0, 'Special Interest':0.0}
+genrehr5={'Foreign':0.0, 'Drama':0.0, 'Independent':0.0, 'Classics':0.0, 'Television':0.0, 'Children & Family':0.0, 'Sci-Fi & Fantasy':0.0, 'Comedy':0.0, 'Romance':0.0, 'Action & Adventure':0.0, 'Horror':0.0, 'Documentary':0.0, 'Thrillers':0.0, 'Music & Musicals':0.0, 'Anime & Animation':0.0, 'Gay & Lesbian':0.0, 'Special Interest':0.0}
 
 
 decadehr={'1':0}
@@ -50,14 +50,17 @@ i=0
 
 idfile=open('idfile.txt','w')
 
-for i in range(1900,2007):
+for i in range(1900,2080):
     yearh[str(i)]=0
     yearhr[str(i)]=0.0
     yearhr5[str(i)]=0.0
 
-for line in open('nflicks.txt').xreadlines( ):
+for line in open('netflix.txt').xreadlines( ):
     arr=line.split('~')
-    rat=int(arr.pop())
+    rat=arr.pop()
+    if rat == '\n':
+	rat = 1
+    rat=int(rat)
     genre=arr.pop()
     mpaa=arr.pop()
     year=arr.pop()
@@ -65,7 +68,7 @@ for line in open('nflicks.txt').xreadlines( ):
     id=arr.pop()
     rating[rat-1]=rating[rat-1]+1
     genreh[genre]=genreh[genre]+1
-    if genre != 'Television':
+    if genre != 'Television'
 	decadeh[year[2]]=decadeh[year[2]]+1
 	decadehr[year[2]]=decadehr[year[2]]+rat
 	yearh[year]=yearh[year]+1
@@ -88,29 +91,29 @@ for x in range(0,5):
 
 mpaas=['G','PG','PG-13','R','NC-17','UR','NR']
 print
-print "MPAA\t#films\t \tAve. Rating"
+print "MPAA  #films  %5star  Avg Rating"
 for m in mpaas:
-    print '%s \t %3d \t %2.2f \t %1.4f' % (m, mpaah[m],decadehr[str(x)]/decadeh[str(x)],mpaahr[m]/mpaah[m])
-
-#    print m+":\t"+str(mpaah[m])+"\t"+str(mpaahr5[m]*100.0/mpaah[m])+"\t"+str(mpaahr[m]/mpaah[m])
+    if mpaah[m] != 0:
+	print '%-6s%6d%8.0f%12.1f' % (m, mpaah[m],mpaahr5[m]*100.0/mpaah[m],mpaahr[m]/mpaah[m])
 
 genres=['Drama', 'Comedy', 'Independent', 'Classics', 'Romance', 'Thrillers', 'Sci-Fi & Fantasy', 'Action & Adventure', 'Foreign', 'Documentary', 'Horror', 'Children & Family']
 
 print
-print "Genre\t\t  #films\t% 5star\tAve Rating"
+print "Genre               #films  %5star  Avg Rating"
 for g in genres:
-    print '%-20s %3d \t %2.2f \t %1.4f' % (g,genreh[g],genrehr5[g]*100.0/genreh[g],genrehr[g]/genreh[g])
+    if genreh[g] != 0:
+	print '%-20s%6d%8.0f%12.1f' % (g,genreh[g],genrehr5[g]*100.0/genreh[g],genrehr[g]/genreh[g])
 
 print
-print "Decade\t#films\t% 5star\tAve Rating"
+print "Decade  #films  %5star  Avg Rating"
 for x in range(0,10):
     if decadeh[str(x)] != 0 :
-	print '%d0s \t %3d \t %2.2f \t %1.4f' % (x,decadeh[str(x)],decadehr5[str(x)]*100.0/decadeh[str(x)],decadehr[str(x)]/decadeh[str(x)])
+	print '%d0s   %8d%8.0f%12.1f' % (x,decadeh[str(x)],decadehr5[str(x)]*100.0/decadeh[str(x)],decadehr[str(x)]/decadeh[str(x)])
 
 
 print
-print "Year\t#films\t% 5star\tAve Rating"
-for x in range(1990,2006):
+print "Year  #films  %5star  Avg Rating"
+for x in range(1990,2080):
     if yearh[str(x)] != 0 :
-	print '%d \t %3d \t %2.2f \t %1.4f' % (x,yearh[str(x)],yearhr5[str(x)]*100.0/yearh[str(x)],yearhr[str(x)]/yearh[str(x)])
-#	print str(x)+":\t"+str(yearh[str(x)])+"\t"+str(yearhr5[str(x)]*100.0/yearh[str(x)])+"\t"+str(yearhr[str(x)]/yearh[str(x)])
+	print '%d%8d%8.0f%12.1f' % (x,yearh[str(x)],yearhr5[str(x)]*100.0/yearh[str(x)],yearhr[str(x)]/yearh[str(x)])
+

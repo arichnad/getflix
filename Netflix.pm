@@ -63,17 +63,17 @@ sub getRatings {
   my %mpaa;
   my %genre;
   my $body = 'alt="Next"';
-  my $cur = 0;
+  my $cur = 1;
   my $genre ='';
   while ( $body =~ /alt="Next"/i ) {
-  open(FD, ">>nflicks.txt") or die("Couldn't open nflicks.txt");
+  open(FD, ">>netflix.txt") or die("Couldn't open netflix.txt");
     $self->{www}->get( "http://www.netflix.com/MoviesYouveSeen?title_sort=t&pageNum=$cur" );
     $body = $self->{www}->content();
 #    print $body;
 
 # This is the main Regular Expression. If Netflix ever changes their web site, 
 # this regular expression will need to change as well.
-    while ( $body =~ /movieid=(\d+).*?trkid=\d+">([^<]+).*?\((\d+)\).*?mpaa>(.*?)<.*?genre>(.*?)<.*?StarbarInsert\(\d+,\d,(\d)/gs ) {
+    while ( $body =~ /movieid=(\d+).*? id="[^"]*">([^<]+).*?\((\d+)\).*?mpaa">(.*?)<.*?genre">(.*?)<(?:.*?you rated this movie: (\d))?/gsi ) {
       print FD "$1~$2~$3~$4~$5~$6\n";
       close $FD;
     }

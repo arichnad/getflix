@@ -28,7 +28,7 @@ info, and I'll work on it faster! Tell me I suck, and I will work on it... never
 Included files:
 - getflix.pl
 - Netflix.pm
-- nflixHisto.py
+- netflixHisto.py
 - getdirectors.py
 - getstars.py
 - dirHisto.py
@@ -45,11 +45,11 @@ INSTRUCTIONS:
 - Edit your email address and password in the getflix.pl script.
 - Edit the path to perl (the first line) to match yours in each .pl script.
 - Edit the path to python to match yours in each .py script.
-- Run './getflix.pl' at the command line. This will generate nflicks.txt.
+- Run './getflix.pl' at the command line. This will generate netflix.txt.
 - Run './getdirectors.py' at command line.
 - Run './getstars.py' at command line.
 - Run './dirHisto.py' at command line.
-- Run './nflixHisto.py' at command line. This will generate idfile.txt.
+- Run './netflixHisto.py' at command line. This will generate idfile.txt.
 
 Enjoy! And if you have questions, comments, bugs or additions: 
 http://www.scienceaddiction.com
