@@ -20,11 +20,6 @@ Copyright 2006 Devanshu Mehta
  getflix.pl and Netflix.pm have are based on scripts by John Ressig
  of http://ejohn.org. Thanks John!
 
-KEEP IN MIND: I AM NOT A GREAT PERL PROGRAMMER!
-There must be better ways to do what I've done; but the method I've used works.
-If you think my way is wrong, let me know and I will work on it. Send me a specific 
-info, and I'll work on it faster! Tell me I suck, and I will work on it... never.
-
 Included files:
 - getflix.pl
 - Netflix.pm
@@ -51,8 +46,4 @@ INSTRUCTIONS:
 - Run './dirHisto.py' at command line.
 - Run './netflixHisto.py' at command line. This will generate idfile.txt.
 
-Enjoy! And if you have questions, comments, bugs or additions: 
-http://www.scienceaddiction.com
 
-Emails will be less likely to be taken seriously. Leave comments on the web
-site for a response.
