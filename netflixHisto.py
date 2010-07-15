@@ -73,13 +73,15 @@ for line in open('netflix.txt').xreadlines( ):
 	decadehr[year[2]]=decadehr[year[2]]+rat
 	yearh[year]=yearh[year]+1
 	yearhr[year]=yearhr[year]+rat
-	mpaah[mpaa]=mpaah[mpaa]+1
-	mpaahr[mpaa]=mpaahr[mpaa]+rat
+	if mpaa != '' :
+	    mpaah[mpaa]=mpaah[mpaa]+1
+	    mpaahr[mpaa]=mpaahr[mpaa]+rat
 	genrehr[genre]=genrehr[genre]+rat
 	if rat==5 :
 	    decadehr5[year[2]]=decadehr5[year[2]]+1
 	    yearhr5[year]=yearhr5[year]+1
-	    mpaahr5[mpaa]=mpaahr5[mpaa]+1
+	    if mpaa != '' :
+		mpaahr5[mpaa]=mpaahr5[mpaa]+1
 	    genrehr5[genre]=genrehr5[genre]+1
 	tempstr=id+"~"+str(rat)+"\n"
 	idfile.write(tempstr)
