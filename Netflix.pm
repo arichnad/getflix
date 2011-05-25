@@ -45,7 +45,7 @@ sub new {
 #  print $self->{www}->content();
   $self->{www}->set_fields(
     email => $self->{u},
-    password1 => $self->{p}
+    password => $self->{p}
   );
   $self->{www}->submit();
 #  print $self->{www}->content();
