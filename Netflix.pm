@@ -62,24 +62,24 @@ sub getRatings {
   my %id;
   my %mpaa;
   my %genre;
-  my $body = 'alt="Next"';
+  my $body = '';
   my $cur = 1;
   my $genre ='';
-  while ( $body =~ /alt="Next"/i ) {
+  while ( $body !~ /next-inactive/i ) {
   open(FD, ">>netflix.txt") or die("Couldn't open netflix.txt");
-    $self->{www}->get( "http://www.netflix.com/MoviesYouveSeen?title_sort=t&pageNum=$cur" );
+    $self->{www}->get( "http://www.netflix.com/MoviesYouveSeen?st=tt&so=0&pn=$cur" );
     $body = $self->{www}->content();
 #    print $body;
 
 # This is the main Regular Expression. If Netflix ever changes their web site, 
 # this regular expression will need to change as well.
 #60000165~Erin Brockovich~2000~R~Drama~5
-    while ( $body =~ /(?:movieid=(\d+)|unav).*?>.*? id="[^"]*">([^<]+).*?\((\d+)\).*?genre">(.*?)<(?:.*?you rated this movie: (\d))?/gsi ) {
-      print FD "$1~$2~$3~~$4~$5\n";
-      close $FD;
+    while ( $body =~ s/^.*?(?:movieid=(\d+)|unav).*?>.*? id="b[^"]*?".*?>([^<]+).*?genre">(.*?)<(?:.*?you rated this movie: (\d))?//gsi ) {
+      print FD "$1~$2~~~$3~$4\n";
     }
     ++$cur;
   }
+  close FD;
  
   return \%ret;
 }
