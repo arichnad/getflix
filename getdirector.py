@@ -40,22 +40,22 @@ id=0
 tempstr=''
 br=Browser()
 for line in open('netflix.txt').xreadlines( ):
-    arr=line.split('~')
-    rat=int(arr.pop())
-    id=arr.pop(0)
-    tempstr="http://www.netflix.com/MovieDisplay?movieid="+id
-    br.set_handle_robots(False)
-    f=br.open(tempstr)
-    i=0
-    body=f.read()
-    i=body.find('Director:')
-    directorline=body[i+14:i+75]
-    list=directorline.split('<')
-    director=list[0].strip('. ')
-    tempstr=director+"~"+str(rat)+"\n"
-    idfile.write(tempstr)
-    print tempstr
-    idfile.flush()
+	arr=line.split('~')
+	rat=int(arr.pop())
+	id=arr.pop(0)
+	tempstr="http://www.netflix.com/MovieDisplay?movieid="+id
+	br.set_handle_robots(False)
+	f=br.open(tempstr)
+	i=0
+	body=f.read()
+	i=body.find('Director:')
+	directorline=body[i+14:i+75]
+	list=directorline.split('<')
+	director=list[0].strip('. ')
+	tempstr=director+"~"+str(rat)+"\n"
+	idfile.write(tempstr)
+	print tempstr
+	idfile.flush()
 #br=Browser()
 #br.set_handle_robots(False)
 #f=br.open(sys.argv[1])

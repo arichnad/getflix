@@ -28,59 +28,59 @@ use Data::Dumper;
 use WWW::Mechanize;
 
 sub new {
-  my $ref = shift;
-  my $class = ref( $ref ) || $ref;
+	my $ref = shift;
+	my $class = ref( $ref ) || $ref;
 
-  my $self = bless {
-    u => undef,
-    p => undef,
-    www => new WWW::Mechanize(),
-    @_
-  }, $class;
+	my $self = bless {
+		u => undef,
+		p => undef,
+		www => new WWW::Mechanize(),
+		@_
+	}, $class;
 
-  die "Netflix requires a username and password" unless 
-    ( $self->{u} && $self->{p} );
+	die "Netflix requires a username and password" unless 
+		( $self->{u} && $self->{p} );
 
-  $self->{www}->get('http://www.netflix.com/Login');
-#  print $self->{www}->content();
-  $self->{www}->set_fields(
-    email => $self->{u},
-    password => $self->{p}
-  );
-  $self->{www}->submit();
-#  print $self->{www}->content();
-  return $self;
+	$self->{www}->get('http://www.netflix.com/Login');
+#	print $self->{www}->content();
+	$self->{www}->set_fields(
+		email => $self->{u},
+		password => $self->{p}
+	);
+	$self->{www}->submit();
+#	print $self->{www}->content();
+	return $self;
 }
 
 sub getRatings {
-  my ( $self ) = @_;
+	my ( $self ) = @_;
 
 
 
-  my %rat;
-  my %year;
-  my %id;
-  my %mpaa;
-  my %genre;
-  my $body = '';
-  my $cur = 1;
-  my $genre ='';
-  while ( $body !~ /next-inactive/i ) {
-  open(FD, ">>netflix.txt") or die("Couldn't open netflix.txt");
-    $self->{www}->get( "http://www.netflix.com/MoviesYouveSeen?st=tt&so=0&pn=$cur" );
-    $body = $self->{www}->content();
-#    print $body;
+	my %rat;
+	my %year;
+	my %id;
+	my %mpaa;
+	my %genre;
+	my $body = '';
+	my $cur = 1;
+	my $genre ='';
+	while ( $body !~ /next-inactive/i ) {
+	open(FD, ">>netflix.txt") or die("Couldn't open netflix.txt");
+		$self->{www}->get( "http://www.netflix.com/MoviesYouveSeen?st=tt&so=0&pn=$cur" );
+		$body = $self->{www}->content();
+#		print $body;
 
 # This is the main Regular Expression. If Netflix ever changes their web site, 
 # this regular expression will need to change as well.
 #60000165~Erin Brockovich~2000~R~Drama~5
-    while ( $body =~ s/^.*?(?:movieid=(\d+)|unav).*?>.*? id="b[^"]*?".*?>([^<]+).*?genre">(.*?)<(?:.*?you rated this movie: (\d))?//gsi ) {
-      print FD "$1~$2~~~$3~$4\n";
-    }
-    ++$cur;
-  }
-  close FD;
+		while ( $body =~ s/^.*?(?:movieid=(\d+)|unav).*?>.*? id="b[^"]*?".*?>([^<]+).*?genre">(.*?)<(?:.*?you rated this movie: (\d))?//gsi ) {
+			print FD "$1~$2~~~$3~$4\n";
+		}
+		++$cur;
+	}
+	close FD;
  
-  return \%ret;
+	return \%ret;
 }
 1;

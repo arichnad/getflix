@@ -43,8 +43,8 @@ stars=starline.split('<')
 starlist=stars[0].split(',')
 i=0
 while i<len(starlist):
-    starlist[i]=starlist[i].strip('. ')
-    i=i+1
+	starlist[i]=starlist[i].strip('. ')
+	i=i+1
 
 print starlist
 
