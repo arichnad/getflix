@@ -67,22 +67,27 @@ for line in open('netflix.txt').xreadlines( ):
     name=arr.pop()
     id=arr.pop()
     rating[rat-1]=rating[rat-1]+1
-    genreh[genre]=genreh[genre]+1
+    if genre != '' :
+        genreh[genre]=genreh[genre]+1
     if genre != 'Television' :
-	decadeh[year[2]]=decadeh[year[2]]+1
-	decadehr[year[2]]=decadehr[year[2]]+rat
-	yearh[year]=yearh[year]+1
-	yearhr[year]=yearhr[year]+rat
+	if len(year) == 4 :
+	    decadeh[year[2]]=decadeh[year[2]]+1
+	    decadehr[year[2]]=decadehr[year[2]]+rat
+	    yearh[year]=yearh[year]+1
+	    yearhr[year]=yearhr[year]+rat
 	if mpaa != '' :
 	    mpaah[mpaa]=mpaah[mpaa]+1
 	    mpaahr[mpaa]=mpaahr[mpaa]+rat
-	genrehr[genre]=genrehr[genre]+rat
+	if genre != '' :
+	    genrehr[genre]=genrehr[genre]+rat
 	if rat==5 :
-	    decadehr5[year[2]]=decadehr5[year[2]]+1
-	    yearhr5[year]=yearhr5[year]+1
+	    if len(year) == 4 :
+	        decadehr5[year[2]]=decadehr5[year[2]]+1
+	        yearhr5[year]=yearhr5[year]+1
 	    if mpaa != '' :
 		mpaahr5[mpaa]=mpaahr5[mpaa]+1
-	    genrehr5[genre]=genrehr5[genre]+1
+	    if genre != '' :
+	        genrehr5[genre]=genrehr5[genre]+1
 	tempstr=id+"~"+str(rat)+"\n"
 	idfile.write(tempstr)
 
