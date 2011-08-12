@@ -69,6 +69,7 @@ sub getRatings {
 	open(FD, ">>netflix.txt") or die("Couldn't open netflix.txt");
 		$self->{www}->get( "http://www.netflix.com/MoviesYouveSeen?st=tt&so=0&pn=$cur" );
 		$body = $self->{www}->content();
+		print "loading page $cur\n";
 #		print $body;
 
 # This is the main Regular Expression. If Netflix ever changes their web site, 
