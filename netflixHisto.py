@@ -33,9 +33,9 @@ mpaah={'PG':0, 'R':0, 'PG-13':0, 'UR':0, 'G':0, 'NC-17':0, 'NR':0}
 mpaahr={'PG':0.0, 'R':0.0, 'PG-13':0.0, 'UR':0.0, 'G':0.0, 'NC-17':0.0, 'NR':0.0}
 mpaahr5={'PG':0.0, 'R':0.0, 'PG-13':0.0, 'UR':0.0, 'G':0.0, 'NC-17':0.0, 'NR':0.0}
 
-genreh={'Foreign':0, 'Drama':0, 'Independent':0, 'Classics':0, 'Television':0, 'Children & Family':0, 'Sci-Fi & Fantasy':0, 'Comedy':0, 'Romance':0, 'Action & Adventure':0, 'Horror':0, 'Documentary':0, 'Thrillers':0, 'Music & Musicals':0, 'Anime & Animation':0, 'Gay & Lesbian':0, 'Special Interest':0, 'Faith & Spirituality':0}
-genrehr={'Foreign':0.0, 'Drama':0.0, 'Independent':0.0, 'Classics':0.0, 'Television':0.0, 'Children & Family':0.0, 'Sci-Fi & Fantasy':0.0, 'Comedy':0.0, 'Romance':0.0, 'Action & Adventure':0.0, 'Horror':0.0, 'Documentary':0.0, 'Thrillers':0.0, 'Music & Musicals':0.0, 'Anime & Animation':0.0, 'Gay & Lesbian':0.0, 'Special Interest':0.0, 'Faith & Spirituality':0.0}
-genrehr5={'Foreign':0.0, 'Drama':0.0, 'Independent':0.0, 'Classics':0.0, 'Television':0.0, 'Children & Family':0.0, 'Sci-Fi & Fantasy':0.0, 'Comedy':0.0, 'Romance':0.0, 'Action & Adventure':0.0, 'Horror':0.0, 'Documentary':0.0, 'Thrillers':0.0, 'Music & Musicals':0.0, 'Anime & Animation':0.0, 'Gay & Lesbian':0.0, 'Special Interest':0.0, 'Faith & Spirituality':0.0}
+genreh={'Foreign Movies':0, 'Dramas':0, 'Indie Movies':0, 'Classic Movies':0, 'TV':0, 'Children\'s Movies':0, 'Sci-Fi':0, 'Comedies':0, 'Romantic Movies':0, 'Action':0, 'Horror':0, 'Docs':0, 'Thrillers':0, 'Music':0, 'Anime':0, 'Gay & Lesbian':0, 'Special Interest':0, 'Faith and Spirituality':0}
+genrehr={'Foreign Movies':0.0, 'Dramas':0.0, 'Indie Movies':0.0, 'Classic Movies':0.0, 'TV':0.0, 'Children\'s Movies':0.0, 'Sci-Fi':0.0, 'Comedies':0.0, 'Romantic Movies':0.0, 'Action':0.0, 'Horror':0.0, 'Docs':0.0, 'Thrillers':0.0, 'Music':0.0, 'Anime':0.0, 'Gay & Lesbian':0.0, 'Special Interest':0.0, 'Faith and Spirituality':0.0}
+genrehr5={'Foreign Movies':0.0, 'Dramas':0.0, 'Indie Movies':0.0, 'Classic Movies':0.0, 'TV':0.0, 'Children\'s Movies':0.0, 'Sci-Fi':0.0, 'Comedies':0.0, 'Romantic Movies':0.0, 'Action':0.0, 'Horror':0.0, 'Docs':0.0, 'Thrillers':0.0, 'Music':0.0, 'Anime':0.0, 'Gay & Lesbian':0.0, 'Special Interest':0.0, 'Faith and Spirituality':0.0}
 
 
 decadehr={'1':0}
@@ -69,7 +69,7 @@ for line in open('netflix.txt').xreadlines( ):
 	rating[rat-1]=rating[rat-1]+1
 	if genre != '' :
 		genreh[genre]=genreh[genre]+1
-	if genre != 'Television' :
+	if genre != 'TV' :
 		if len(year) == 4 :
 			decadeh[year[2]]=decadeh[year[2]]+1
 			decadehr[year[2]]=decadehr[year[2]]+rat
@@ -103,7 +103,7 @@ for m in mpaas:
 	if mpaah[m] != 0:
 		print '%-6s%6d%8.0f%12.1f' % (m, mpaah[m],mpaahr5[m]*100.0/mpaah[m],mpaahr[m]/mpaah[m])
 
-genres=['Drama', 'Comedy', 'Independent', 'Classics', 'Romance', 'Thrillers', 'Sci-Fi & Fantasy', 'Action & Adventure', 'Foreign', 'Documentary', 'Horror', 'Children & Family', 'Faith & Spirituality']
+genres=['Dramas', 'Comedies', 'Indie Movies', 'Classic Movies', 'Romantic Movies', 'Thrillers', 'Sci-Fi', 'Action', 'Foreign Movies', 'Docs', 'Horror', 'Children\'s Movies', 'Faith and Spirituality']
 
 print
 print "Genre               #films  %5star  Avg Rating"
