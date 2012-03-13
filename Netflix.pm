@@ -74,9 +74,8 @@ sub getRatings {
 
 # This is the main Regular Expression. If Netflix ever changes their web site, 
 # this regular expression will need to change as well.
-#60000165~Erin Brockovich~2000~R~Drama~5
-		while ( $body =~ s/^.*?(?:movieid=(\d+)|unav).*?>.*? id="b[^"]*?".*?>\s*([^<]+?)\s*<.*?"genre">(.*?)<.*?(?:you rated this movie: (\d)|Average rating)//gsi ) {
-			print FD "$1~$2~~~$3~$4\n";
+		while ( $body =~ s/^.*?(?:\sid="(b[^"]+_0)"|unav).*?>\s*([^<]+?)\s*<.*?(?:you rated this movie: (\d)|Average rating)//gsi ) {
+			print FD "$1~$2~~~~$3\n";
 		}
 		++$cur;
 	}
