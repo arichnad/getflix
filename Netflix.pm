@@ -65,7 +65,7 @@ sub getRatings {
 	my $body = '';
 	my $cur = 1;
 	my $genre ='';
-	while ( $body !~ /next-inactive/i ) {
+	while ( $body !~ /next-inactive|You have not rated any movies/i ) {
 	open(FD, ">>netflix.txt") or die("Couldn't open netflix.txt");
 		$self->{www}->get( "http://www.netflix.com/MoviesYouveSeen?st=tt&so=0&pn=$cur" );
 		$body = $self->{www}->content();
