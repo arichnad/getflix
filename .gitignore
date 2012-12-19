@@ -2,3 +2,4 @@ getflix-*.pl
 history.txt
 idfile.txt
 netflix.txt
+netflix*-names.txt
